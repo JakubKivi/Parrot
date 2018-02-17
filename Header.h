@@ -80,6 +80,7 @@ public:
 	int figureHP;
     int figureDMG;
 	const figType &type;
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 	//Figure(std::string name, bool own, int HP, int dmg, int cordX, int cordY);
 	Figure(const figType &type, bool owner)
 			: type(type), owner(owner),
@@ -114,8 +115,7 @@ public:
 			: Figure(PAWN, owner, HP, dmg) {}
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
-
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 };
 
 class Knight : public Figure  //koń
@@ -126,10 +126,9 @@ public:
 	Knight(bool owner, int HP) : Figure(KNIGHT, owner, HP) {}
 	Knight(bool owner, int HP, int dmg)
 			: Figure(KNIGHT, owner, HP, dmg) {}
-
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
 
 };
 
@@ -141,10 +140,9 @@ public:
 	Rook(bool owner, int HP) : Figure(ROOK, owner, HP) {}
 	Rook(bool owner, int HP, int dmg)
 			: Figure(ROOK, owner, HP, dmg) {}
-
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
 
 };
 
@@ -156,10 +154,9 @@ public:
 	Bishop(bool owner, int HP) : Figure(BISHOP, owner, HP) {}
 	Bishop(bool owner, int HP, int dmg)
 			: Figure(BISHOP, owner, HP, dmg) {}
-
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
 
 };
 
@@ -173,8 +170,7 @@ public:
 			: Figure(QUEEN, owner, HP, dmg) {}
     bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
-
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 };
 
 //commit testowy
@@ -187,10 +183,8 @@ public:
 	King(bool owner, int HP) : Figure(KING, owner, HP) {}
 	King(bool owner, int HP, int dmg)
 			: Figure(KING, owner, HP, dmg) {}
-
 	bool canAttack(int targetX, int targetY) override;
 	static bool canAttack(int cordX, int cordY, int targetX, int targetY);
-	//bool canMove(int targetX, int targetY);
-
+	bool canMove(int cordX, int cordY, int targetX, int targetY);
 };
 

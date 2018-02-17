@@ -10,6 +10,7 @@ static bool attacked;
 static bool moved;
 static std::string input;
 static int positionX, positionY, targetX, targetY;
+bool winner;
 
 void move() {}
 
@@ -17,7 +18,7 @@ int main() {
     //openFile(); paweł pisze wczytywanie wszystkoeeeeego z pliku
 
     do {
-        player = roundNumber % 2 + 1 != 0;
+        player = roundNumber % 2 + 1;
         std::cout << "Tura gracza " << player << std::endl;
         attacked = 0;
         moved = 0;
@@ -73,8 +74,8 @@ int main() {
                 continue;
             } else error("Zły input");
 
-            if(board.canMove(positionX, positionY, targetX, targetY)){         //drogi remku z przyszłości wiemy że to inaczej
-                move(); // kiedys się zrobi
+            if(board[positionX][positionY]->canMove(targetX, targetY)){  //drogi remku z przyszłości wiemy że to inaczej
+                move(); // kiedys się zrobi IMPORTANT!!!
                 moved=1;
             }
             else {

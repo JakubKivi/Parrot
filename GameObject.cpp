@@ -46,16 +46,7 @@ void Figure::reveal() {
     //std::cout << "armour: " << Figure::armour << std::endl;
 }
 
-void Figure::addHP(int hp) {
-    figureHP += hp;
-    if (figureHP < 0) {
-        std::ostringstream stringStream;
-        stringStream << "Z pola" << cordX << " " << cordY <<
-                     "zniknęła figura" << name() << std::endl;
-        log(stringStream.str());
-    }
 
-}
 
 bool Board::canMove(int cordX, int cordY, int targetX, int targetY) {
     /*
@@ -81,10 +72,13 @@ bool Figure::isYour(bool player) {
     return owner == player;
 }
 
-void setHP(int dmg, Figure *target) {
-    if ((*target).figureHP < dmg) {
-        //zabijaj
-        std::cout<<(*target).type << " zginl "<<d
+void setHP(int dmg, Figure *target, int targetX, int targetY, Board &board) {
+    if ((*target).figureHP <= dmg) {
+        board[targetX][targetY]= new EmptyField();
+        std::cout<<(*target).type << " zginl (deli musi napisać żeby było wiadomo jaka figura" ;
+
+        /* IMPORTANT!!!   napisać sprawdzanie czy to król od Deliego żeby było wiadomo czy ktoś wygrał  */
+
     } else {
         (*target).figureHP -= dmg;  //figura target dstaje dmg obrazen
         std::cout << (*target).type << " otrzymal "<<dmg<<" obrazen"<<std::endl;
